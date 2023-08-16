@@ -6,7 +6,7 @@ exports.AccountIndex = (req, res) => {
 
 exports.AccountLogOut = (req, res) => {
   req.session.destroy();
-  res.redirect("/Login");
+  res.redirect("Login");
 };
 
 exports.Register = (req, res) => {
@@ -29,13 +29,13 @@ exports.RegisterPost = async (req, res) => {
   }
 };
 exports.Login = (req, res) => {
-  res.render("/Login");
+  res.render("Login");
 };
 exports.LoginPost = async (req, res) => {
   if (req.session.user) {
     req.flash("msgs", ["Você já está logado"]);
     req.flash("cssClass", "error");
-    return res.redirect("/Login");
+    return res.redirect("Login");
   }
 
   const newLogin = new User(req.body);
