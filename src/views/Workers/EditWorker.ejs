@@ -1,0 +1,51 @@
+<%- include("./Modules/head.ejs") %>
+
+  <body>
+    <%- include('./Modules/Header.ejs') %>
+    <main>
+      <section class="sectionData">
+        <h2 class="center">Edição de funcionarios</h2>
+        <h3 class="center">Altere os dados necessários</h3>
+        <%- include('./Modules/msgs.ejs') %>
+        <form action="/registerWorkers" method="post" class="forms">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="input">
+            <label for="name">Nome:</label>
+            <input type="text" value="<%= worker.Ename %>" name="Ename" />
+          </div>
+
+          <div class="input">
+            <label for="lastname">Sobrenome:</label>
+            <input type="text" value="<%= worker.surname %>" name="surname" />
+          </div>
+
+          <div class="input">
+            <label for="email">Email:</label>
+            <input type="text" value="<%= worker.email %>" name="email" />
+          </div>
+
+          <div class="input">
+            <label for="fone">Data de contratação:</label>
+            <input type="date" value="<%= worker.hiringDate %>" name="hiringDate" />
+          </div>
+          <div class="input">
+            <label for="fone">Função (cargo):</label>
+            <input type="text" value="<%= worker.role %>" name="role" />
+          </div>
+          <div class="input">
+            <label for="fone">Quantidade de presenças:</label>
+            <input type="number" value="<%= worker.presence %>" name="presence" />
+          </div>
+          <div class="input">
+            <label for="fone">Quantidade de faltas:</label>
+            <input type="number" value="<%= worker.absence %>" name="absence" />
+          </div>
+          <button class="bnt green">Criar contato</button>
+        </form>
+      </section>
+    </main>
+
+    <%- include("./Modules/footer.ejs") %>
+    
+  </body>
+</html>

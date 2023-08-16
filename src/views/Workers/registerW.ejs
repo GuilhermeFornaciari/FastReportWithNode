@@ -1,0 +1,45 @@
+<%- include("./Modules/head.ejs") %>
+
+  <body>
+    <%- include('./Modules/Header.ejs') %>
+    <main>
+      <section class="sectionData">
+        <h2 class="center">Cadastro de novos funcionarios</h2>
+        <h3 class="center">Digite os dados deste novo funcionario</h3>
+        <%- include('./Modules/msgs.ejs') %>
+        <form action="/WorkersRegister" method="post" class="forms">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="input">
+            <label for="name">Nome:</label>
+            <input type="text" value="" name="Ename" />
+          </div>
+
+          <div class="input">
+            <label for="lastname">Sobrenome:</label>
+            <input type="text" value="" name="surname" />
+          </div>
+
+          <div class="input">
+            <label for="email">Email:</label>
+            <input type="text" value="" name="email" />
+          </div>
+
+          <div class="input">
+            <label for="fone">Data de contratação:</label>
+            <input type="date" value="" name="hiringDate" />
+          </div>
+          <div class="input">
+            <label for="fone">Função (cargo):</label>
+            <input type="text" value="" name="role" />
+          </div>
+          <button class="bnt green">Criar contato</button>
+        </form>
+      </section>
+    </main>
+
+    <%- include("./Modules/footer.ejs") %>
+    <script src="./assets/js/bundle.js"></script>
+
+    
+  </body>
+</html>

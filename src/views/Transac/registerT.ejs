@@ -1,0 +1,38 @@
+<%- include("./Modules/head.ejs") %>
+
+    
+  <body>
+    <%- include('./Modules/Header.ejs') %>
+    <main>
+      <section class="sectionData">
+
+        <h2 class="center">Cadastro de novos contatos</h2>
+        <h3 class="center">Digite os dados deste novo contato</h3>
+        <form action="/TransacRegister" method="post" class="forms">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="input">
+            <label for="name">Nome:</label>
+            <input type="text" value="" name="name" />
+          </div>
+
+          <div class="input">
+            <label for="lastname">Sobrenome:</label>
+            <input type="text" value="" name="lastname" />
+          </div>
+
+          <div class="input">
+            <label for="email">Email:</label>
+            <input type="text" value="" name="email" />
+          </div>
+
+          <div class="input">
+            <label for="fone">Telefone:</label>
+            <input type="text" value="" name="fone" />
+          </div>
+          <button class="bnt green">Criar contato</button>
+        </form>
+      </section>
+    </main>
+    <%- include("./Modules/footer.ejs") %>
+  </body>
+</html>

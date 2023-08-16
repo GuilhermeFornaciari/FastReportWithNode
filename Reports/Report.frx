@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/28/2023 20:54:28" ReportInfo.Modified="07/29/2023 06:41:05" ReportInfo.CreatorVersion="2023.2.0.0">
+  <Dictionary>
+    <MongoDBDataConnection Name="Connection1" ConnectionString="rijcmlqdcuUenw+NwSRhR1d8iSrPmX4mxQR40RrBlLjAKDvolE=">
+      <TableDataSource Name="workers" DataType="System.Int32" Enabled="true" TableName="workers">
+        <Column Name="_id" DataType="System.String"/>
+        <Column Name="Ename" DataType="System.String"/>
+        <Column Name="surname" DataType="System.String"/>
+        <Column Name="email" DataType="System.String"/>
+        <Column Name="hiringDate" DataType="System.String"/>
+        <Column Name="role" DataType="System.String"/>
+        <Column Name="presence" DataType="System.String"/>
+        <Column Name="absence" DataType="System.String"/>
+        <Column Name="__v" DataType="System.String"/>
+      </TableDataSource>
+    </MongoDBDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="103.95">
+      <TextObject Name="Text1" Left="9.45" Top="9.45" Width="538.65" Height="37.8" Text="Relatório de presença de funcionario" Font="Arial, 20pt, style=Bold"/>
+      <TextObject Name="Text2" Left="9.45" Top="56.7" Width="396.9" Height="18.9" Text="Documento emitido em: [Date]" Font="Arial, 12pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="107.15" Width="718.2" Height="85.05">
+      <TextObject Name="Text3" Left="9.45" Top="9.45" Width="292.95" Height="18.9" Text="[workers.Ename] [workers.surname]" Font="Arial, 12pt"/>
+      <LineObject Name="Line1" Width="718.2"/>
+      <TextObject Name="Text7" Left="406.35" Top="9.45" Width="292.95" Height="18.9" Text="Funcionario especializado em: [workers.role]" Font="Arial, 10pt"/>
+      <TextObject Name="Text8" Left="406.35" Top="37.8" Width="189" Height="18.9" Text="Email: [workers.email]" Font="Arial, 10pt"/>
+      <TextObject Name="Text6" Left="9.45" Top="37.8" Width="170.1" Height="47.25" Text="Contratado em:&#13;&#10;[workers.hiringDate]" Font="Arial, 10pt"/>
+    </PageHeaderBand>
+    <PageFooterBand Name="PageFooter1" Top="195.4" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

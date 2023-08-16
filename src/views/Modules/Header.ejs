@@ -1,0 +1,19 @@
+<header class="header">
+  <div>
+    <a href="/registerTransactions" class="divHeader"
+      ><h4>Registrar transações</h4></a
+    >
+    <a href="/registerWorkers" class="divHeader"
+      ><h4>Registrar trabalhadores</h4></a
+    >
+  </div>
+  <div>
+    <% if (!user) {%>
+    <a href="/" class="divHeader"><h2>Login</h2></a>
+    <% } else {%>
+    <h3 class="divHeader">
+      Bem vindo <a href="/account" class="divHeader"><%= user.username %></a>
+    </h3>
+    <% } %>
+  </div>
+</header>
