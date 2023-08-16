@@ -1,0 +1,16 @@
+<%- include("./Modules/head.ejs") %>
+
+  <body>
+    <%- include('./Modules/Header.ejs') %>
+    <main>
+      <section class="sectionData">
+        <h2 class="center">Funcionarios cadastrados</h2>
+        <h3 class="center">Aqui estão todos os funcionarios que você cadastrou</h3>
+        <%- include('./Modules/msgs.ejs') %>
+        <button class="bnt green" href="/Workers/Register">Registrar novo funcionario</button>
+      </section>
+    </main>
+
+    <%- include("./Modules/footer.ejs") %>
+  </body>
+</html>

@@ -12,7 +12,7 @@ exports.loginRequired = (req, res, next) => {
   if (!req.session.user) {
     req.flash("msgs", "Você deve estar logado para acessar esta pagina");
     req.flash("cssClass", "error");
-    req.session.save(() => res.redirect("/"));
+    req.session.save(() => res.redirect("/Account/Login"));
     return;
   }
   next();

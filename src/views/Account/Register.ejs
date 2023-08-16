@@ -8,10 +8,10 @@
         <h3 class="center">Digite os seus dados para cadastro</h3>
         <p class="center">
           Você já possui cadastro?
-          <a href="/">Faça login! </a>
+          <a href="/Account/Login">Faça login! </a>
         </p>
         <%- include('./Modules/msgs.ejs') %>
-        <form action="/register" method="post" class="forms">
+        <form action="/Account/Register" method="post" class="forms">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
           <div class="input">

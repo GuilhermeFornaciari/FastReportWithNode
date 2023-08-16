@@ -10,13 +10,21 @@ const workerController = require("./src/controllers/WorkerController");
 const accountController = require("./src/controllers/AccountController");
 
 //controllers
-routes.get("/Account", loginRequired, accountController.AccountIndex);
-routes.post("/Account", loginRequired, accountController.AccountLogOut);
+routes.get("/Account", loginRequired, accountController.index);
+routes.post("/Account", loginRequired, accountController.logOut);
+routes.get("/Account/Login", accountController.login);
+routes.post("/Account/Login", accountController.loginPost);
+routes.get("/Account/Register", accountController.register);
+routes.post("/Account/Register", accountController.registerPost);
 
-routes.get("/Account/Login", accountController.Login);
-routes.post("/Account/Login", accountController.LoginPost);
+routes.get("/Workers", loginRequired, workerController.index);
+routes.get("/Workers/Register", loginRequired, workerController.register);
+routes.post("/Workers/Register", loginRequired, workerController.registerPost);
+routes.get("/Workers/Edit/:id", loginRequired, workerController.edit);
+routes.post("/Workers/Edit/:id", loginRequired, workerController.editPost);
 
-routes.get("/Account/Login", accountController.Register);
-routes.post("/Account/Login", accountController.RegisterPost);
+routes.get("/Transac", loginRequired, transacController.index);
+routes.get("/Transac/Register", loginRequired, transacController.register);
+routes.post("/Transac/Register", loginRequired, transacController.registerPost);
 
 module.exports = routes;

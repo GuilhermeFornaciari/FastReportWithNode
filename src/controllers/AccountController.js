@@ -1,19 +1,20 @@
 const { User } = require("../models/UserModel");
 
-exports.AccountIndex = (req, res) => {
+exports.index = (req, res) => {
   res.render("Account");
 };
 
-exports.AccountLogOut = (req, res) => {
+exports.logOut = (req, res) => {
   req.session.destroy();
-  res.redirect("Login");
+  console.log("Deslogadoooooooooooooooooooooo");
+  res.redirect("/Account/Login");
 };
 
-exports.Register = (req, res) => {
+exports.register = (req, res) => {
   res.render("Register");
 };
 
-exports.RegisterPost = async (req, res) => {
+exports.registerPost = async (req, res) => {
   const newRegister = new User(req.body);
   await newRegister.register();
   console.log(newRegister.error);
@@ -21,21 +22,21 @@ exports.RegisterPost = async (req, res) => {
   if (newRegister.error.length > 0) {
     req.flash("msgs", newRegister.error);
     req.flash("cssClass", "error");
-    res.redirect("Register");
+    res.redirect("/Account/Register");
   } else {
     req.flash("msgs", "Usuário Cadastrado com sucesso");
     req.flash("cssClass", "sucess");
-    res.redirect("back");
+    res.redirect("/Account/Login");
   }
 };
-exports.Login = (req, res) => {
+exports.login = (req, res) => {
   res.render("Login");
 };
-exports.LoginPost = async (req, res) => {
+exports.loginPost = async (req, res) => {
   if (req.session.user) {
     req.flash("msgs", ["Você já está logado"]);
     req.flash("cssClass", "error");
-    return res.redirect("Login");
+    return res.redirect("/Account/Login");
   }
 
   const newLogin = new User(req.body);
@@ -43,10 +44,10 @@ exports.LoginPost = async (req, res) => {
   if (newLogin.error.length > 0) {
     req.flash("msgs", newLogin.error);
     req.flash("cssClass", "error");
-    return res.redirect("/");
+    return res.redirect("/Account/Login");
   }
   req.session.user = newLogin.user;
   req.flash("msgs", "Você logou com sucesso");
   req.flash("cssClass", "sucess");
-  return res.redirect("/Login");
+  return res.redirect("/Account/Login");
 };

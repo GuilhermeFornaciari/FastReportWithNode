@@ -7,10 +7,10 @@
         <h3 class="center">Digite os seus dados credenciais</h3>
         <p class="center">
           Você ainda não possui cadastro?
-          <a href="/register">Registre-se já! </a>
+          <a href="/Account/Register">Registre-se já! </a>
         </p>
         <%- include('./Modules/msgs.ejs') %>
-        <form action="/" method="post" class="forms">
+        <form action="/Account/Login" method="post" class="forms">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
           <div class="input">

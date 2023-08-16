@@ -1,9 +1,13 @@
 const { User } = require("../models/workerModel");
 
-exports.transac = (req, res) => {
-  res.render("registerT");
+exports.index = (req, res) => {
+  res.render("Transac");
 };
 
-exports.transacSubmit = (req, res) => {
+exports.register = (req, res) => {
+  res.render("TransacRegister");
+};
+
+exports.registerPost = (req, res) => {
   res.send(req.body);
 };
