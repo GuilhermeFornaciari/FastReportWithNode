@@ -7,7 +7,7 @@
         <h2 class="center">Cadastro de novos funcionarios</h2>
         <h3 class="center">Digite os dados deste novo funcionario</h3>
         <%- include('./Modules/msgs.ejs') %>
-        <form action="/WorkersRegister" method="post" class="forms">
+        <form action="/Workers/Register" method="post" class="forms">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <div class="input">
             <label for="name">Nome:</label>

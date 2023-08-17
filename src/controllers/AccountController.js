@@ -6,7 +6,6 @@ exports.index = (req, res) => {
 
 exports.logOut = (req, res) => {
   req.session.destroy();
-  console.log("Deslogadoooooooooooooooooooooo");
   res.redirect("/Account/Login");
 };
 

@@ -7,11 +7,11 @@
         <h2 class="center">Edição de funcionarios</h2>
         <h3 class="center">Altere os dados necessários</h3>
         <%- include('./Modules/msgs.ejs') %>
-        <form action="/registerWorkers" method="post" class="forms">
+        <form action="/Workers/Edit/<%= worker._id %>" method="post" class="forms">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <div class="input">
             <label for="name">Nome:</label>
-            <input type="text" value="<%= worker.Ename %>" name="Ename" />
+            <input type="text" value="<%= worker["Ename"] %>" name="Ename" />
           </div>
 
           <div class="input">
@@ -26,7 +26,7 @@
 
           <div class="input">
             <label for="fone">Data de contratação:</label>
-            <input type="date" value="<%= worker.hiringDate %>" name="hiringDate" />
+            <input type="date" value="<%= worker.hiringDate.toString() %>" name="hiringDate" />
           </div>
           <div class="input">
             <label for="fone">Função (cargo):</label>
@@ -40,7 +40,7 @@
             <label for="fone">Quantidade de faltas:</label>
             <input type="number" value="<%= worker.absence %>" name="absence" />
           </div>
-          <button class="bnt green">Criar contato</button>
+          <button class="bnt green">Enviar alterações</button>
         </form>
       </section>
     </main>

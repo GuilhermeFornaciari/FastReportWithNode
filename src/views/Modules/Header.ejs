@@ -1,19 +1,19 @@
 <header class="header">
   <div>
+    <% if (user){ %>
     <a href="/Transac/Register" class="divHeader"
       ><h4>Registrar transações</h4></a
     >
-    <a href="/Workers/Register" class="divHeader"
-      ><h4>Registrar trabalhadores</h4></a
-    >
+    <a href="/Workers/<%=user._id%>" class="divHeader"><h4>Funcionarios</h4></a>
+    <% } %>
   </div>
   <div>
-    <% if (!user) {%>
-    <a href="/Account/Login" class="divHeader"><h2>Login</h2></a>
-    <% } else {%>
+    <% if (user) {%>
     <h3 class="divHeader">
       Bem vindo <a href="/Account" class="divHeader"><%= user.username %></a>
     </h3>
+    <% } else {%>
+    <a href="/Account/Login" class="divHeader"><h2>Login</h2></a>
     <% } %>
   </div>
 </header>

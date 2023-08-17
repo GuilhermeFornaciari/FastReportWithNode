@@ -29065,6 +29065,7 @@ main {
   box-shadow: 0px 0px 5px 1px rgb(41, 71, 75);
   height: 100%;
   border-radius: 20px;
+  overflow: auto;
 }
 p {
   font-size: 16px;
@@ -29086,17 +29087,27 @@ h3 {
 
 table,
 th,
-tr {
-  font-size: 15px;
+tr,
+td {
+  font-size: 16px;
   font-family: var(--default-font);
   margin: 0;
 }
 table {
-  margin: 20px;
+  width: 100%;
+  overflow: hidden;
 }
 th {
-  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
+
+td {
+  font-size: 15px;
+  background-color: transparent;
+  border-bottom: 2px #bdbdbd solid;
+  padding-bottom: 4px;
+}
+
 a {
   color: black;
   text-decoration: none;
@@ -29128,7 +29139,7 @@ a {
   font-size: 16px;
   max-width: 300px;
   margin-top: 21px;
-  padding: 8px;
+  padding: 7px;
   border-radius: 10px;
   border: none;
   background-color: var(--primary-color-darker);
@@ -29136,7 +29147,12 @@ a {
   border-bottom: 3px black solid;
   cursor: pointer;
 }
-
+.bnt.green.table {
+  margin-top: 0px;
+}
+.bnt.red.table {
+  margin-top: 0px;
+}
 .bnt:focus {
   border-bottom: none;
   transform: translateY(3px);
@@ -29147,6 +29163,12 @@ a {
 .bnt.red {
   background-color: var(--cancel-color);
 }
+.buttonsPanel {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .input {
   width: 100%;
   max-width: 350px;
@@ -29226,7 +29248,7 @@ a {
   font-size: 20px;
   padding-bottom: 1vh;
 }
-`, "",{"version":3,"sources":["webpack://./frontend/css/style.css"],"names":[],"mappings":"AACA;EACE,wBAAwB;EACxB,+BAA+B;EAC/B,gCAAgC;EAChC,kCAAkC;EAClC,8BAA8B;;EAE9B,yDAAyD;AAC3D;;AAEA;EACE,sBAAsB;EACtB,UAAU;EACV,SAAS;EACT,UAAU;EACV,gCAAgC;AAClC;;AAEA;EACE,sCAAsC;AACxC;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,aAAa;EACb,oBAAoB;EACpB,2CAA2C;EAC3C,YAAY;EACZ,mBAAmB;AACrB;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;;AAEA;;;EAGE,eAAe;EACf,gCAAgC;EAChC,SAAS;AACX;AACA;EACE,YAAY;AACd;AACA;EACE,2BAA2B;AAC7B;AACA;EACE,YAAY;EACZ,qBAAqB;EACrB,0BAA0B;EAC1B,eAAe;AACjB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,gBAAgB;EAChB,mBAAmB;EACnB,gBAAgB;AAClB;AACA;EACE,oCAAoC;AACtC;AACA;EACE,qCAAqC;AACvC;AACA;EACE,aAAa;EACb,WAAW;AACb;AACA;EACE,WAAW;EACX,eAAe;EACf,gBAAgB;EAChB,gBAAgB;EAChB,YAAY;EACZ,mBAAmB;EACnB,YAAY;EACZ,6CAA6C;EAC7C,YAAY;EACZ,8BAA8B;EAC9B,eAAe;AACjB;;AAEA;EACE,mBAAmB;EACnB,0BAA0B;AAC5B;AACA;EACE,sCAAsC;AACxC;AACA;EACE,qCAAqC;AACvC;AACA;EACE,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,sBAAsB;EACtB,QAAQ;EACR,kBAAkB;AACpB;AACA;EACE,eAAe;EACf,WAAW;EACX,6BAA6B;EAC7B,aAAa;EACb,YAAY;EACZ,gCAAgC;EAChC,mBAAmB;AACrB;AACA;EACE,WAAW;EACX,gBAAgB;AAClB;AACA;EACE,mBAAmB;EACnB,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,mBAAmB;EACnB,aAAa;EACb,sBAAsB;EACtB,QAAQ;AACV;AACA;EACE,WAAW;AACb;AACA;EACE,sBAAsB;AACxB;;AAEA;EACE,6BAA6B;AAC/B;;AAEA;EACE,UAAU;AACZ;AACA;EACE,qBAAqB;AACvB;;AAEA;EACE,eAAe;AACjB;AACA;EACE,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,8BAA8B;EAC9B,WAAW;EACX,WAAW;EACX,6CAA6C;EAC7C,mBAAmB;EACnB,aAAa;AACf;;AAEA;EACE,kBAAkB;EAClB,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,gCAAgC;EAChC,eAAe;EACf,mBAAmB;AACrB","sourcesContent":["@import url(\"https://fonts.googleapis.com/css?family=Nunito+Sans\");\n:root {\n  --primary-color: #81d4fa;\n  --primary-color-darker: #283593;\n  --confirm-color: rgb(0, 140, 54);\n  --sucess-color: rgb(120, 255, 172);\n  --cancel-color: rgb(199, 3, 3);\n\n  --default-font: Nunito Sans, Arial, Helvetica, sans-serif;\n}\n\n* {\n  box-sizing: border-box;\n  outline: 0;\n  margin: 0;\n  padding: 0;\n  font-family: var(--default-font);\n}\n\nbody {\n  background-color: var(--primary-color);\n}\n\nmain {\n  display: flex;\n  background-color: white;\n  margin: 0 18%;\n  padding-bottom: 20px;\n  box-shadow: 0px 0px 5px 1px rgb(41, 71, 75);\n  height: 100%;\n  border-radius: 20px;\n}\np {\n  font-size: 16px;\n  font-weight: 200;\n}\nh1 {\n  font-size: 50px;\n  font-weight: 600;\n}\n\nh2 {\n  font-size: 32px;\n  font-weight: 700;\n}\nh3 {\n  font-size: 24px;\n  font-weight: 300;\n}\n\ntable,\nth,\ntr {\n  font-size: 15px;\n  font-family: var(--default-font);\n  margin: 0;\n}\ntable {\n  margin: 20px;\n}\nth {\n  border-top: 1px solid black;\n}\na {\n  color: black;\n  text-decoration: none;\n  text-decoration: underline;\n  font-size: 100%;\n}\n\n.msgs {\n  margin: 5px auto;\n  padding: 5px;\n  text-align: center;\n  font-size: 16px;\n  font-weight: 200;\n  border-radius: 10px;\n  max-width: 300px;\n}\n.msgs.error {\n  background-color: rgb(255, 110, 122);\n}\n.msgs.sucess {\n  background-color: var(--sucess-color);\n}\n.sectionData {\n  padding: 20px;\n  width: 100%;\n}\n.bnt {\n  width: 100%;\n  font-size: 16px;\n  max-width: 300px;\n  margin-top: 21px;\n  padding: 8px;\n  border-radius: 10px;\n  border: none;\n  background-color: var(--primary-color-darker);\n  color: white;\n  border-bottom: 3px black solid;\n  cursor: pointer;\n}\n\n.bnt:focus {\n  border-bottom: none;\n  transform: translateY(3px);\n}\n.bnt.green {\n  background-color: var(--confirm-color);\n}\n.bnt.red {\n  background-color: var(--cancel-color);\n}\n.input {\n  width: 100%;\n  max-width: 350px;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  margin-bottom: 5px;\n}\n.input input {\n  font-size: 16px;\n  width: 100%;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 2px #bdbdbd solid;\n  padding-bottom: 4px;\n}\n.input label {\n  width: 100%;\n  text-align: left;\n}\n.register {\n  padding-right: 20px;\n  display: flex;\n  justify-content: right;\n  width: 100%;\n}\n.forms {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.sections {\n  width: 100%;\n}\n.mainContacts {\n  flex-direction: column;\n}\n\n.mainLogin {\n  justify-content: space-around;\n}\n\n.erase {\n  color: red;\n}\n.erase:hover {\n  color: rgb(189, 0, 0);\n}\n\n.edit {\n  color: darkcyan;\n}\n.edit:hover {\n  color: #304d63;\n}\n\n.header {\n  display: flex;\n  justify-content: space-between;\n  width: 100%;\n  height: 9vh;\n  background-color: var(--primary-color-darker);\n  align-items: center;\n  padding: 10px;\n}\n\n.center {\n  text-align: center;\n  margin: 20px;\n}\n\n.divHeader {\n  color: white;\n  font-family: var(--default-font);\n  font-size: 20px;\n  padding-bottom: 1vh;\n}\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./frontend/css/style.css"],"names":[],"mappings":"AACA;EACE,wBAAwB;EACxB,+BAA+B;EAC/B,gCAAgC;EAChC,kCAAkC;EAClC,8BAA8B;;EAE9B,yDAAyD;AAC3D;;AAEA;EACE,sBAAsB;EACtB,UAAU;EACV,SAAS;EACT,UAAU;EACV,gCAAgC;AAClC;;AAEA;EACE,sCAAsC;AACxC;;AAEA;EACE,aAAa;EACb,uBAAuB;EACvB,aAAa;EACb,oBAAoB;EACpB,2CAA2C;EAC3C,YAAY;EACZ,mBAAmB;EACnB,cAAc;AAChB;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,eAAe;EACf,gBAAgB;AAClB;AACA;EACE,eAAe;EACf,gBAAgB;AAClB;;AAEA;;;;EAIE,eAAe;EACf,gCAAgC;EAChC,SAAS;AACX;AACA;EACE,WAAW;EACX,gBAAgB;AAClB;AACA;EACE,8BAA8B;AAChC;;AAEA;EACE,eAAe;EACf,6BAA6B;EAC7B,gCAAgC;EAChC,mBAAmB;AACrB;;AAEA;EACE,YAAY;EACZ,qBAAqB;EACrB,0BAA0B;EAC1B,eAAe;AACjB;;AAEA;EACE,gBAAgB;EAChB,YAAY;EACZ,kBAAkB;EAClB,eAAe;EACf,gBAAgB;EAChB,mBAAmB;EACnB,gBAAgB;AAClB;AACA;EACE,oCAAoC;AACtC;AACA;EACE,qCAAqC;AACvC;AACA;EACE,aAAa;EACb,WAAW;AACb;AACA;EACE,WAAW;EACX,eAAe;EACf,gBAAgB;EAChB,gBAAgB;EAChB,YAAY;EACZ,mBAAmB;EACnB,YAAY;EACZ,6CAA6C;EAC7C,YAAY;EACZ,8BAA8B;EAC9B,eAAe;AACjB;AACA;EACE,eAAe;AACjB;AACA;EACE,eAAe;AACjB;AACA;EACE,mBAAmB;EACnB,0BAA0B;AAC5B;AACA;EACE,sCAAsC;AACxC;AACA;EACE,qCAAqC;AACvC;AACA;EACE,WAAW;EACX,aAAa;EACb,8BAA8B;AAChC;;AAEA;EACE,WAAW;EACX,gBAAgB;EAChB,aAAa;EACb,sBAAsB;EACtB,QAAQ;EACR,kBAAkB;AACpB;AACA;EACE,eAAe;EACf,WAAW;EACX,6BAA6B;EAC7B,aAAa;EACb,YAAY;EACZ,gCAAgC;EAChC,mBAAmB;AACrB;AACA;EACE,WAAW;EACX,gBAAgB;AAClB;AACA;EACE,mBAAmB;EACnB,aAAa;EACb,sBAAsB;EACtB,WAAW;AACb;AACA;EACE,mBAAmB;EACnB,aAAa;EACb,sBAAsB;EACtB,QAAQ;AACV;AACA;EACE,WAAW;AACb;AACA;EACE,sBAAsB;AACxB;;AAEA;EACE,6BAA6B;AAC/B;;AAEA;EACE,UAAU;AACZ;AACA;EACE,qBAAqB;AACvB;;AAEA;EACE,eAAe;AACjB;AACA;EACE,cAAc;AAChB;;AAEA;EACE,aAAa;EACb,8BAA8B;EAC9B,WAAW;EACX,WAAW;EACX,6CAA6C;EAC7C,mBAAmB;EACnB,aAAa;AACf;;AAEA;EACE,kBAAkB;EAClB,YAAY;AACd;;AAEA;EACE,YAAY;EACZ,gCAAgC;EAChC,eAAe;EACf,mBAAmB;AACrB","sourcesContent":["@import url(\"https://fonts.googleapis.com/css?family=Nunito+Sans\");\n:root {\n  --primary-color: #81d4fa;\n  --primary-color-darker: #283593;\n  --confirm-color: rgb(0, 140, 54);\n  --sucess-color: rgb(120, 255, 172);\n  --cancel-color: rgb(199, 3, 3);\n\n  --default-font: Nunito Sans, Arial, Helvetica, sans-serif;\n}\n\n* {\n  box-sizing: border-box;\n  outline: 0;\n  margin: 0;\n  padding: 0;\n  font-family: var(--default-font);\n}\n\nbody {\n  background-color: var(--primary-color);\n}\n\nmain {\n  display: flex;\n  background-color: white;\n  margin: 0 18%;\n  padding-bottom: 20px;\n  box-shadow: 0px 0px 5px 1px rgb(41, 71, 75);\n  height: 100%;\n  border-radius: 20px;\n  overflow: auto;\n}\np {\n  font-size: 16px;\n  font-weight: 200;\n}\nh1 {\n  font-size: 50px;\n  font-weight: 600;\n}\n\nh2 {\n  font-size: 32px;\n  font-weight: 700;\n}\nh3 {\n  font-size: 24px;\n  font-weight: 300;\n}\n\ntable,\nth,\ntr,\ntd {\n  font-size: 16px;\n  font-family: var(--default-font);\n  margin: 0;\n}\ntable {\n  width: 100%;\n  overflow: hidden;\n}\nth {\n  border-bottom: 1px solid black;\n}\n\ntd {\n  font-size: 15px;\n  background-color: transparent;\n  border-bottom: 2px #bdbdbd solid;\n  padding-bottom: 4px;\n}\n\na {\n  color: black;\n  text-decoration: none;\n  text-decoration: underline;\n  font-size: 100%;\n}\n\n.msgs {\n  margin: 5px auto;\n  padding: 5px;\n  text-align: center;\n  font-size: 16px;\n  font-weight: 200;\n  border-radius: 10px;\n  max-width: 300px;\n}\n.msgs.error {\n  background-color: rgb(255, 110, 122);\n}\n.msgs.sucess {\n  background-color: var(--sucess-color);\n}\n.sectionData {\n  padding: 20px;\n  width: 100%;\n}\n.bnt {\n  width: 100%;\n  font-size: 16px;\n  max-width: 300px;\n  margin-top: 21px;\n  padding: 7px;\n  border-radius: 10px;\n  border: none;\n  background-color: var(--primary-color-darker);\n  color: white;\n  border-bottom: 3px black solid;\n  cursor: pointer;\n}\n.bnt.green.table {\n  margin-top: 0px;\n}\n.bnt.red.table {\n  margin-top: 0px;\n}\n.bnt:focus {\n  border-bottom: none;\n  transform: translateY(3px);\n}\n.bnt.green {\n  background-color: var(--confirm-color);\n}\n.bnt.red {\n  background-color: var(--cancel-color);\n}\n.buttonsPanel {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n}\n\n.input {\n  width: 100%;\n  max-width: 350px;\n  display: flex;\n  flex-direction: column;\n  gap: 2px;\n  margin-bottom: 5px;\n}\n.input input {\n  font-size: 16px;\n  width: 100%;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 2px #bdbdbd solid;\n  padding-bottom: 4px;\n}\n.input label {\n  width: 100%;\n  text-align: left;\n}\n.register {\n  padding-right: 20px;\n  display: flex;\n  justify-content: right;\n  width: 100%;\n}\n.forms {\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  gap: 5px;\n}\n.sections {\n  width: 100%;\n}\n.mainContacts {\n  flex-direction: column;\n}\n\n.mainLogin {\n  justify-content: space-around;\n}\n\n.erase {\n  color: red;\n}\n.erase:hover {\n  color: rgb(189, 0, 0);\n}\n\n.edit {\n  color: darkcyan;\n}\n.edit:hover {\n  color: #304d63;\n}\n\n.header {\n  display: flex;\n  justify-content: space-between;\n  width: 100%;\n  height: 9vh;\n  background-color: var(--primary-color-darker);\n  align-items: center;\n  padding: 10px;\n}\n\n.center {\n  text-align: center;\n  margin: 20px;\n}\n\n.divHeader {\n  color: white;\n  font-family: var(--default-font);\n  font-size: 20px;\n  padding-bottom: 1vh;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

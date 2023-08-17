@@ -32,6 +32,33 @@ module.exports.Worker = class Worker {
   static async findId(id) {
     return WorkerModel.findById(id);
   }
+  static async findAll(id) {
+    return WorkerModel.find({ UserId: id });
+  }
+  static async erase(WorkerId) {
+    await WorkerModel.findByIdAndDelete(WorkerId);
+  }
+
+  async update(WorkerId) {
+    if (this.error.length > 0) {
+      return;
+    }
+
+    this.user = await WorkerModel.findByIdAndUpdate(
+      WorkerId,
+      {
+        Ename: this.Ename,
+        surname: this.surname,
+        email: this.email,
+        hiringDate: this.hiringDate,
+        role: this.role,
+        presence: this.presence,
+        absence: this.absence,
+      },
+      { new: true }
+    );
+    console.log(this.user);
+  }
 
   async register(UserId) {
     if (this.error.length > 0) {

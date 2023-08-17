@@ -29,6 +29,7 @@ main {
   box-shadow: 0px 0px 5px 1px rgb(41, 71, 75);
   height: 100%;
   border-radius: 20px;
+  overflow: auto;
 }
 p {
   font-size: 16px;
@@ -50,17 +51,27 @@ h3 {
 
 table,
 th,
-tr {
-  font-size: 15px;
+tr,
+td {
+  font-size: 16px;
   font-family: var(--default-font);
   margin: 0;
 }
 table {
-  margin: 20px;
+  width: 100%;
+  overflow: hidden;
 }
 th {
-  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
+
+td {
+  font-size: 15px;
+  background-color: transparent;
+  border-bottom: 2px #bdbdbd solid;
+  padding-bottom: 4px;
+}
+
 a {
   color: black;
   text-decoration: none;
@@ -92,7 +103,7 @@ a {
   font-size: 16px;
   max-width: 300px;
   margin-top: 21px;
-  padding: 8px;
+  padding: 7px;
   border-radius: 10px;
   border: none;
   background-color: var(--primary-color-darker);
@@ -100,7 +111,12 @@ a {
   border-bottom: 3px black solid;
   cursor: pointer;
 }
-
+.bnt.green.table {
+  margin-top: 0px;
+}
+.bnt.red.table {
+  margin-top: 0px;
+}
 .bnt:focus {
   border-bottom: none;
   transform: translateY(3px);
@@ -111,6 +127,12 @@ a {
 .bnt.red {
   background-color: var(--cancel-color);
 }
+.buttonsPanel {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .input {
   width: 100%;
   max-width: 350px;
