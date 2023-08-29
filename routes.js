@@ -3,9 +3,13 @@ const express = require("express");
 const routes = express.Router();
 
 //requires
-const { loginRequired } = require("./src/middlewares/middlewares");
+const {
+  loginRequired,
+  workerIdRequired,
+  transacIdRequired,
+} = require("./src/middlewares/middlewares");
 
-const transacController = require("./src/controllers/TransactionController");
+const transacController = require("./src/controllers/TransacController");
 const workerController = require("./src/controllers/WorkerController");
 const accountController = require("./src/controllers/AccountController");
 
@@ -19,13 +23,36 @@ routes.post("/Account/Register", accountController.registerPost);
 
 routes.get("/Workers/Register", loginRequired, workerController.register);
 routes.post("/Workers/Register", loginRequired, workerController.registerPost);
-routes.get("/Workers/:id", loginRequired, workerController.index);
-routes.get("/Workers/Edit/:id", loginRequired, workerController.edit);
-routes.post("/Workers/Edit/:id", loginRequired, workerController.editPost);
-routes.get("/Workers/Erase/:id", loginRequired, workerController.erase);
+routes.get("/Workers/Report", loginRequired, workerController.report);
+routes.get("/Workers", loginRequired, workerController.index);
+
+routes.get(
+  "/Workers/Edit/:id",
+  loginRequired,
+  workerIdRequired,
+  workerController.edit
+);
+routes.post(
+  "/Workers/Edit/:id",
+  loginRequired,
+  workerIdRequired,
+  workerController.editPost
+);
+routes.get(
+  +"/Workers/Erase/:id",
+  loginRequired,
+  workerIdRequired,
+  workerController.erase
+);
 
 routes.get("/Transac", loginRequired, transacController.index);
 routes.get("/Transac/Register", loginRequired, transacController.register);
 routes.post("/Transac/Register", loginRequired, transacController.registerPost);
+routes.get(
+  "/Transac/Erase/:id",
+  loginRequired,
+  transacIdRequired,
+  transacController.erase
+);
 
 module.exports = routes;

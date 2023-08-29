@@ -27,11 +27,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/Account", express.static(path.join(__dirname, "public")));
-app.use("/Workers", express.static(path.join(__dirname, "public")));
-app.use("/Workers/Edit", express.static(path.join(__dirname, "public")));
-app.use("/Transac", express.static(path.join(__dirname, "public")));
-app.use("/Transac/Edit", express.static(path.join(__dirname, "public")));
 
 const sessionOptions = session({
   secret: "iuhnftdfftuffjktydftyrfjqgbecfrvigvhf",

@@ -1,3 +1,6 @@
+const { Worker } = require("../models/workerModel");
+const { Transac } = require("../models/transacModel");
+
 exports.checkCsrfError = (err, req, res, next) => {
   if (err && "EBADCSRFTOKEN" === err.code) {
     return res.send("BAD CSRF");
@@ -17,6 +20,21 @@ exports.loginRequired = (req, res, next) => {
   }
   next();
 };
+exports.workerIdRequired = async (req, res, next) => {
+  if (!req.params.id) return res.render("404");
+  let person = await Worker.findId(req.params.id);
+  if (!person) return res.render("404");
+  if (person.UserId != req.session.user["_id"]) return res.render("404");
+  next();
+};
+exports.transacIdRequired = async (req, res, next) => {
+  if (!req.params.id) return res.render("404");
+  let person = await Transac.findId(req.params.id);
+  if (!person) return res.render("404");
+  if (person.UserId != req.session.user["_id"]) return res.render("404");
+  next();
+};
+
 exports.globalMiddleware = (req, res, next) => {
   res.locals.msgs = req.flash("msgs");
   res.locals.cssClass = req.flash("cssClass");

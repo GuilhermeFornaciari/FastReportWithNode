@@ -30,6 +30,7 @@ module.exports.Worker = class Worker {
     this.valida(body);
   }
   static async findId(id) {
+    if (!mongoose.Types.ObjectId.isValid(id)) return;
     return WorkerModel.findById(id);
   }
   static async findAll(id) {
@@ -50,7 +51,6 @@ module.exports.Worker = class Worker {
         Ename: this.Ename,
         surname: this.surname,
         email: this.email,
-        hiringDate: this.hiringDate,
         role: this.role,
         presence: this.presence,
         absence: this.absence,

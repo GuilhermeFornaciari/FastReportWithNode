@@ -1,38 +1,34 @@
 <%- include("./Modules/head.ejs") %>
 
-    
   <body>
     <%- include('./Modules/Header.ejs') %>
     <main>
       <section class="sectionData">
-
-        <h2 class="center">Cadastro de novos contatos</h2>
-        <h3 class="center">Digite os dados deste novo contato</h3>
-        <form action="/TransacRegister" method="post" class="forms">
-          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-          <div class="input">
-            <label for="name">Nome:</label>
-            <input type="text" value="" name="name" />
-          </div>
-
-          <div class="input">
-            <label for="lastname">Sobrenome:</label>
-            <input type="text" value="" name="lastname" />
-          </div>
-
-          <div class="input">
-            <label for="email">Email:</label>
-            <input type="text" value="" name="email" />
-          </div>
-
-          <div class="input">
-            <label for="fone">Telefone:</label>
-            <input type="text" value="" name="fone" />
-          </div>
-          <button class="bnt green">Criar contato</button>
-        </form>
+        <h2 class="center">Transações registradas</h2>
+        <h3 class="center">Aqui estão todos as transações realizadas</h3>
+        <%- include('./Modules/msgs.ejs') %>
+        <table>
+          <tr>
+            <th>Destinatário</th>
+            <th>Data</th>
+            <th>Valor</th>
+            <th>Apagar</th>
+          </tr>
+          <% transac.forEach(element => {  %>
+            <tr>
+              <td class="center"> <%= element.receiver; %></td>
+              <td class="center"> <%= element.date.toLocaleDateString("PT-br"); %></td>
+              <td class="center"> <%= element.value; %></td>
+              <td class="center"><a href="/Transac/Erase/<%=element._id%>"><button class="bnt red table">Apagar</button></a></td>
+            </tr>
+          <% }); %>
+        </table>
+        <div class="buttonsPanel">
+          <a href="/Transac/Register"><button class="bnt green">Registrar nova transação</button></a>
+        </div>
       </section>
     </main>
+
     <%- include("./Modules/footer.ejs") %>
   </body>
 </html>

@@ -6,30 +6,25 @@
     <main>
       <section class="sectionData">
 
-        <h2 class="center">Cadastro de novos contatos</h2>
-        <h3 class="center">Digite os dados deste novo contato</h3>
+        <h2 class="center">Cadastro de novas transações</h2>
+        <h3 class="center">Digite os dados desta nova transação</h3>
         <form action="/Transac/Register" method="post" class="forms">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <div class="input">
-            <label for="name">Nome:</label>
-            <input type="text" value="" name="name" />
+            <label for="name">Destinatário:</label>
+            <input type="text" value="" name="receiver" />
           </div>
 
           <div class="input">
-            <label for="lastname">Sobrenome:</label>
-            <input type="text" value="" name="lastname" />
+            <label for="lastname">Data:</label>
+            <input type="date" value="" name="date" />
           </div>
 
           <div class="input">
-            <label for="email">Email:</label>
-            <input type="text" value="" name="email" />
+            <label for="fone">Valor:</label>
+            <input type="number" value="" name="value" />
           </div>
-
-          <div class="input">
-            <label for="fone">Telefone:</label>
-            <input type="text" value="" name="fone" />
-          </div>
-          <button class="bnt green">Criar contato</button>
+          <button class="bnt green">Adicionar transação</button>
         </form>
       </section>
     </main>
