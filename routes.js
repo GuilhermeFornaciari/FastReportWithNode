@@ -13,6 +13,9 @@ const transacController = require("./src/controllers/TransacController");
 const workerController = require("./src/controllers/WorkerController");
 const accountController = require("./src/controllers/AccountController");
 
+routes.get("/", accountController.login)
+
+
 //controllers
 routes.get("/Account", loginRequired, accountController.index);
 routes.post("/Account", loginRequired, accountController.logOut);
