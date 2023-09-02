@@ -127,6 +127,11 @@ a {
 .bnt.red {
   background-color: var(--cancel-color);
 }
+.btn.primary{
+  background-color: var(--primary-color-darker);
+
+}
+
 .buttonsPanel {
   width: 100%;
   display: flex;

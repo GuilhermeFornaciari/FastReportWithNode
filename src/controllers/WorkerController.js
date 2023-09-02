@@ -1,6 +1,6 @@
-const { Worker, WorkerModel } = require("../models/workerModel");
+const { Worker } = require("../models/workerModel");
 const { errorMsg, sucessMsg } = require("../services/msgs");
-const https = require("https");
+const axios = require("axios")
 
 exports.index = async (req, res) => {
   let worker = await Worker.findAll(res.locals.user["_id"]);
@@ -9,6 +9,7 @@ exports.index = async (req, res) => {
 
 exports.register = (req, res) => {
   res.render("WorkerRegister");
+  
 };
 
 exports.registerPost = (req, res) => {
@@ -51,18 +52,24 @@ exports.erase = async (req, res) => {
 
 exports.report = async (req, res) => {
   let workers = await Worker.findAll(res.locals.user["_id"]);
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-  console.log("ERRO DE SEGURANÇA NO SISTEMA DE REPORT");
   try {
-    const response = await fetch("https://localhost:7119/api/Worker", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(workers),
-    });
-    let json = await response.json();
-    return res.send(json);
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+    console.log("ERRO DE SEGURANÇA NO SISTEMA DE REPORT");
+    const response = await axios.post("https://localhost:7119/api/Worker", JSON.stringify(workers),
+      {
+        headers: { "Content-Type": "application/json" },
+        responseType: 'stream'
+        
+      });
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename="relatorio.pdf"');
+      
+    response.data.pipe(res)
+    
   } catch (e) {
     console.log(e);
     return res.render("404");
   }
 };
+
+

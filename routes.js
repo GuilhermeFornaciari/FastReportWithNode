@@ -21,38 +21,19 @@ routes.post("/Account/Login", accountController.loginPost);
 routes.get("/Account/Register", accountController.register);
 routes.post("/Account/Register", accountController.registerPost);
 
-routes.get("/Workers/Register", loginRequired, workerController.register);
 routes.post("/Workers/Register", loginRequired, workerController.registerPost);
+routes.get("/Workers/Register", loginRequired, workerController.register);
 routes.get("/Workers/Report", loginRequired, workerController.report);
 routes.get("/Workers", loginRequired, workerController.index);
-
-routes.get(
-  "/Workers/Edit/:id",
-  loginRequired,
-  workerIdRequired,
-  workerController.edit
-);
-routes.post(
-  "/Workers/Edit/:id",
-  loginRequired,
-  workerIdRequired,
-  workerController.editPost
-);
-routes.get(
-  +"/Workers/Erase/:id",
-  loginRequired,
-  workerIdRequired,
-  workerController.erase
-);
+routes.get("/Workers/Edit/:id",loginRequired,workerIdRequired,workerController.edit);
+routes.get("/Workers/Erase/:id",  loginRequired,  workerIdRequired,  workerController.erase);
+routes.post("/Workers/Edit/:id",  loginRequired,  workerIdRequired,  workerController.editPost);
 
 routes.get("/Transac", loginRequired, transacController.index);
 routes.get("/Transac/Register", loginRequired, transacController.register);
 routes.post("/Transac/Register", loginRequired, transacController.registerPost);
-routes.get(
-  "/Transac/Erase/:id",
-  loginRequired,
-  transacIdRequired,
-  transacController.erase
-);
+routes.get("/Transac/Erase/:id", loginRequired, transacIdRequired, transacController.erase);
+routes.get("/Transac/Report", loginRequired, transacController.report);
+
 
 module.exports = routes;

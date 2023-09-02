@@ -1,5 +1,6 @@
 const { Transac } = require("../models/transacModel");
 const { errorMsg, sucessMsg } = require("../services/msgs");
+const axios = require("axios")
 
 exports.index = async (req, res) => {
   let transac = await Transac.findAll(res.locals.user["_id"]);
@@ -46,4 +47,26 @@ exports.erase = async (req, res) => {
   Transac.erase(req.params.id);
   sucessMsg(req, "Transação apagada com sucesso");
   res.redirect(`/Transac`);
+};
+
+exports.report = async (req, res) => {
+  let transacs = await Transac.findAll(res.locals.user["_id"]);
+  try {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+    console.log("ERRO DE SEGURANÇA NO SISTEMA DE REPORT");
+    const response = await axios.post("https://localhost:7119/api/Transac", JSON.stringify(transacs),
+      {
+        headers: { "Content-Type": "application/json" },
+        responseType: 'stream'
+        
+      });
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename="Relatorio Transações.pdf"');
+      
+    response.data.pipe(res)
+    
+  } catch (e) {
+    console.log(e);
+    return res.render("404");
+  }
 };
