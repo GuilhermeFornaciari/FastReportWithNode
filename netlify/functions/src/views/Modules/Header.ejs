@@ -1,0 +1,18 @@
+<header class="header">
+  <div class="links">
+    <% if (user){ %>
+    <a href="/Transac" class="divHeader"><h4>Transações</h4></a>
+    <a href="/Workers" class="divHeader"><h4>Funcionarios</h4></a>
+
+    <% } %>
+  </div>
+  <div>
+    <% if (user) {%>
+    <h3 class="divHeader">
+      Bem vindo <a href="/Account" class="divHeader"><%= user.username %></a>
+    </h3>
+    <% } else {%>
+    <a href="/Account/Login" class="divHeader"><h2>Login</h2></a>
+    <% } %>
+  </div>
+</header>
