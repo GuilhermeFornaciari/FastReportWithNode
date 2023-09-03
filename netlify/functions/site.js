@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const sessionOptions = session({
   secret: "iuhnftdfftuffjktydftyrfjqgbecfrvigvhf",
-  Store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
+  Store: MongoStore.create({ mongoUrl: "mongodb+srv://GFornaciari:Fornaciari1@cursos.a8qmbsr.mongodb.net/?retryWrites=true&w=majority" }),
   resave: false,
   saveUninitialized: false,
   cookie: {
