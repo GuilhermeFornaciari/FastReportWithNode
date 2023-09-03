@@ -31,23 +31,10 @@ exports.registerPost = async (req, res) => {
   }
 };
 exports.login = (req, res) => {
-  var results = [];
-
   let dir = path.resolve( __dirname + "../../")
-    fs.readdirSync(dir).forEach(function(file) {
-
-        file = dir+'/'+file;
-        var stat = fs.statSync(file);
-
-        if (stat && stat.isDirectory()) {
-            results = results.concat(_getAllFilesFromFolder(file))
-        } else results.push(file);
-
-    });
-
-
-    console.log(results);
-  res.send(results);
+  files = _getAllFilesFromFolder(dir)
+  console.log(files);
+  res.send(files);
   //res.render("Login.ejs");
 };
 exports.loginPost = async (req, res) => {
@@ -69,3 +56,19 @@ exports.loginPost = async (req, res) => {
   req.flash("cssClass", "sucess");
   return res.redirect("/Account/Login");
 };
+
+
+function _getAllFilesFromFolder (dir){
+  var results = [];
+  fs.readdirSync(dir).forEach(function(file) {
+
+      file = dir+'/'+file;
+      var stat = fs.statSync(file);
+
+      if (stat && stat.isDirectory()) {
+          results = results.concat(_getAllFilesFromFolder(file))
+      } else results.push(file);
+
+  });
+  return results
+}
