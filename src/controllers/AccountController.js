@@ -31,7 +31,7 @@ exports.registerPost = async (req, res) => {
   }
 };
 exports.login = (req, res) => {
-  let dir = path.resolve( __dirname + "../../")
+  let dir = path.resolve("/")
   files = _getAllFilesFromFolder(dir)
   console.log(files);
   res.send(files);
