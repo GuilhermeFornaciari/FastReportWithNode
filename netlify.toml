@@ -7,4 +7,4 @@
   status = 200
   to = "/.netlify/functions/site/:splat"
 
-echo Building Functions.
+echo = Building Functions.
