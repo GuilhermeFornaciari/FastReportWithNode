@@ -1,3 +1,4 @@
+const path = require("path");
 const { User } = require("../models/UserModel");
 const  fs = require("fs")
 
@@ -31,9 +32,11 @@ exports.registerPost = async (req, res) => {
 };
 exports.login = (req, res) => {
   var results = [];
-    fs.readdirSync(__dirname).forEach(function(file) {
 
-        file = __dirname+'/'+file;
+  let dir = path.resolve( __dirname + "../../")
+    fs.readdirSync(dir).forEach(function(file) {
+
+        file = dir+'/'+file;
         var stat = fs.statSync(file);
 
         if (stat && stat.isDirectory()) {
