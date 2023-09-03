@@ -1,7 +1,7 @@
 const { User } = require("../models/UserModel");
 
 exports.index = (req, res) => {
-  res.render("Account");
+  res.send("fufonoooo");
 };
 
 exports.logOut = (req, res) => {
