@@ -10,7 +10,7 @@ const {
   checkCsrfError,
   csrfMiddleware,
   globalMiddleware,
-} = require("./src/middlewares/middlewares");
+} = require("../../src/middlewares/middlewares");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
