@@ -44,10 +44,10 @@ app.use(sessionOptions);
 app.use(flash());
 
 app.set("views", [
-  path.resolve(__dirname , "../","../", "src", "views"),
-  path.resolve(__dirname , "../","../", "src", "views", "Account"),
-  path.resolve(__dirname , "../","../", "src", "views", "Workers"),
-  path.resolve(__dirname , "../","../", "src", "views", "Transac"),
+  path.resolve("./", "src", "views"),
+  path.resolve("./", "src", "views", "Account"),
+  path.resolve("./", "src", "views", "Workers"),
+  path.resolve("./", "src", "views", "Transac"),
 ]);
 app.set("view engine", "ejs");
 app.engine('ejs', require('ejs').__express);
