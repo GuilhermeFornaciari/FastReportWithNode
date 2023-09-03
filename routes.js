@@ -13,7 +13,6 @@ const transacController = require("./src/controllers/TransacController");
 const workerController = require("./src/controllers/WorkerController");
 const accountController = require("./src/controllers/AccountController");
 
-router.get('/hello', (req, res) => res.send('Hello World!'));
 
 routes.get("/", loginRequired,  accountController.login);
 

@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const routes = require("../../routes");
+const router = require("../../routes");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 const csrf = require("csurf");
@@ -56,7 +56,7 @@ app.use(globalMiddleware);
 app.use(checkCsrfError);
 app.use(csrfMiddleware);
 
-app.use("/site/",routes);
+app.use("/site/",router);
 
 export const handler = serverless(app);
 
