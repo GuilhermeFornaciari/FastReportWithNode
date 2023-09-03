@@ -31,14 +31,10 @@ exports.registerPost = async (req, res) => {
   }
 };
 exports.login = (req, res) => {
-  let dir = path.resolve(__dirname ,"../","../","../","../")
-  files = _getAllFilesFromFolder(dir)
-  console.log(files);
-  res.send(files);
-  //res.render("Login.ejs");
+  res.render("Login.ejs");
 };
 exports.loginPost = async (req, res) => {
-  if (req.session.user) {
+  if (req.session.user) {     
     req.flash("msgs", ["Você já está logado"]);
     req.flash("cssClass", "error");
     return res.redirect("/Account/Login");
@@ -57,18 +53,3 @@ exports.loginPost = async (req, res) => {
   return res.redirect("/Account/Login");
 };
 
-
-function _getAllFilesFromFolder (dir){
-  var results = [];
-  fs.readdirSync(dir).forEach(function(file) {
-
-      file = dir+'/'+file;
-      var stat = fs.statSync(file);
-
-      if (stat && stat.isDirectory()) {
-          results = results.concat(_getAllFilesFromFolder(file))
-      } else results.push(file);
-
-  });
-  return results
-}
