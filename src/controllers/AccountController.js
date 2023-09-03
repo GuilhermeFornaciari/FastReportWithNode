@@ -32,7 +32,7 @@ exports.registerPost = async (req, res) => {
 exports.login = (req, res) => {
   var results = [];
 
-    filesystem.readdirSync(dir).forEach(function(file) {
+    fs.readdirSync(dir).forEach(function(file) {
 
         file = dir+'/'+file;
         var stat = filesystem.statSync(file);
