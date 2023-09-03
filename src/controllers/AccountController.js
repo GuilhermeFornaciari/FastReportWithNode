@@ -33,7 +33,7 @@ exports.login = (req, res) => {
   var results = [];
     fs.readdirSync(__dirname).forEach(function(file) {
 
-        file = dir+'/'+file;
+        file = __dirname+'/'+file;
         var stat = filesystem.statSync(file);
 
         if (stat && stat.isDirectory()) {
