@@ -41,13 +41,15 @@ const sessionOptions = session({
 app.use(sessionOptions);
 app.use(flash());
 
+app.set("view engine", "ejs");
+app.engine('ejs', require('ejs').__express);
+
 app.set("views", [
   path.resolve(__dirname, "src", "views"),
   path.resolve(__dirname, "src", "views", "Account"),
   path.resolve(__dirname, "src", "views", "Workers"),
   path.resolve(__dirname, "src", "views", "Transac"),
 ]);
-app.set("view engine", "ejs");
 
 app.use(csrf());
 app.use(globalMiddleware);

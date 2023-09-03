@@ -50,6 +50,7 @@ app.set("views", [
   path.resolve(__dirname, "src", "views", "Transac"),
 ]);
 app.set("view engine", "ejs");
+app.engine('ejs', require('ejs').__express);
 
 app.use(csrf());
 app.use(globalMiddleware);
