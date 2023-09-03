@@ -14,6 +14,9 @@ const workerController = require("./src/controllers/WorkerController");
 const accountController = require("./src/controllers/AccountController");
 
 
+
+routes.get("/", loginRequired,  accountController.login);
+
 //controllers
 routes.get("/Account", loginRequired, accountController.index);
 routes.post("/Account", loginRequired, accountController.logOut);
