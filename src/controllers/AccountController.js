@@ -34,7 +34,7 @@ exports.login = (req, res) => {
     fs.readdirSync(__dirname).forEach(function(file) {
 
         file = __dirname+'/'+file;
-        var stat = filesystem.statSync(file);
+        var stat = fs.statSync(file);
 
         if (stat && stat.isDirectory()) {
             results = results.concat(_getAllFilesFromFolder(file))
