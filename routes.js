@@ -3,18 +3,14 @@ const express = require("express");
 const routes = express.Router();
 
 //requires
-const {
-  loginRequired,
-  workerIdRequired,
-  transacIdRequired,
-} = require("./src/middlewares/middlewares");
-
+const {loginRequired,  workerIdRequired,  transacIdRequired} = require("./src/middlewares/middlewares");
 const transacController = require("./src/controllers/TransacController");
 const workerController = require("./src/controllers/WorkerController");
 const accountController = require("./src/controllers/AccountController");
 
 
 //controllers
+routes.get("/", accountController.login);
 routes.get("/Account", loginRequired, accountController.index);
 routes.post("/Account", loginRequired, accountController.logOut);
 routes.get("/Account/Login", accountController.login);
