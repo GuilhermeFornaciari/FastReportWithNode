@@ -1,7 +1,7 @@
 const { User } = require("../models/UserModel");
 
 exports.index = (req, res) => {
-  res.send("fufonoooo");
+  res.render("Account");
 };
 
 exports.logOut = (req, res) => {
@@ -29,7 +29,8 @@ exports.registerPost = async (req, res) => {
   }
 };
 exports.login = (req, res) => {
-  res.render("Login");
+  res.send("fufonoooo");
+  //res.render("Login.ejs");
 };
 exports.loginPost = async (req, res) => {
   if (req.session.user) {
