@@ -29,7 +29,7 @@ exports.registerPost = async (req, res) => {
   }
 };
 exports.login = (req, res) => {
-  res.render("Login.ejs");
+  res.render("Login");
 };
 exports.loginPost = async (req, res) => {
   if (req.session.user) {
