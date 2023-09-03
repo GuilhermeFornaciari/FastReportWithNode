@@ -1,4 +1,5 @@
 const { User } = require("../models/UserModel");
+const  fs = require("fs")
 
 exports.index = (req, res) => {
   res.render("Account");
@@ -29,7 +30,22 @@ exports.registerPost = async (req, res) => {
   }
 };
 exports.login = (req, res) => {
-  res.send(__dirname +",,,,,," + __filename);
+  var results = [];
+
+    filesystem.readdirSync(dir).forEach(function(file) {
+
+        file = dir+'/'+file;
+        var stat = filesystem.statSync(file);
+
+        if (stat && stat.isDirectory()) {
+            results = results.concat(_getAllFilesFromFolder(file))
+        } else results.push(file);
+
+    });
+
+
+    console.log(results);
+  res.send(results);
   //res.render("Login.ejs");
 };
 exports.loginPost = async (req, res) => {
