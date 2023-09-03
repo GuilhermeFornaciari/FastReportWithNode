@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const routes = require("./routes");
+const routes = require("../../routes");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 const csrf = require("csurf");
