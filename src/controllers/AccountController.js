@@ -29,7 +29,7 @@ exports.registerPost = async (req, res) => {
   }
 };
 exports.login = (req, res) => {
-  res.send("fufonoooo");
+  res.send(__dirname +",,,,,," + __filename);
   //res.render("Login.ejs");
 };
 exports.loginPost = async (req, res) => {
