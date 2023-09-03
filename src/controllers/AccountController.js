@@ -31,8 +31,7 @@ exports.registerPost = async (req, res) => {
 };
 exports.login = (req, res) => {
   var results = [];
-
-    fs.readdirSync(dir).forEach(function(file) {
+    fs.readdirSync(__dirname).forEach(function(file) {
 
         file = dir+'/'+file;
         var stat = filesystem.statSync(file);
