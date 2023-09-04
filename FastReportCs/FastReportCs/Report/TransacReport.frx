@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="09/02/2023 13:09:32" ReportInfo.Modified="09/02/2023 13:45:44" ReportInfo.CreatorVersion="2023.2.0.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+    private double sum;
+
+    private void Data1_BeforePrint(object sender, EventArgs e)
+    {
+      sum += ((Double)Report.GetColumnValue(&quot;JSON.item.value&quot;));         
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <JsonDataSourceConnection Name="Connection" ConnectionString="rijcmlqbJsCNDUWD8zs7Fjc+Sa5ClTbtho6PWEC2iVuQUq4asTj19GAGGliDuPzplaJjHDoSsZHcD96q5rEBtvQs2KjD0GkbtGM1Rl1/gqleWqQBItS4PmcHkYFpNFYF/IX2PlW0WDEf0cCeOaHaq/Yr74RslR1EGIq4XmOpIokNRhoI7HMbmclCg++BIyLp59ZWvoQyrRFmpxJNjhGwxhoaZ5zqllcK/fvQNaZMWVGXKAaaxx4rm7yu89qTAYRedLZ1N2Jpq7cRUHj5ibUbH4RKB/GcZAzENSK1nxt1xJEcsNwu3d5JLR04/2I4+DBvb1pW1vESiJZ2DmgyMOnafkNEudQpsxKjabvMtTx2p56ci1ubL2jmt105RHqQp7FDsJIi6sD">
+      <JsonTableDataSource Name="JSON" DataType="FastReport.Utils.Json.JsonArray" Enabled="true" TableName="JSON">
+        <Column Name="index" DataType="System.Int32"/>
+        <Column Name="item" DataType="FastReport.JsonBase">
+          <Column Name="_id" DataType="System.String"/>
+          <Column Name="receiver" DataType="System.String"/>
+          <Column Name="date" DataType="System.String"/>
+          <Column Name="value" DataType="System.Double"/>
+          <Column Name="userId" DataType="System.String"/>
+        </Column>
+        <Column Name="array" DataType="FastReport.JsonBase"/>
+      </JsonTableDataSource>
+    </JsonDataSourceConnection>
+    <Total Name="Total" Expression="[JSON.item.value]" Evaluator="Data1" PrintOn="ReportSummary1"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="56.7">
+      <TextObject Name="Text6" Left="18.9" Top="9.45" Width="652.05" Height="37.8" Text="Relatório de transações" HorzAlign="Center" Font="Arial, 20pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="60.7" Width="718.2" Height="28.35">
+      <TextObject Name="Text4" Left="18.9" Width="189" Height="18.9" Text="Recebedor" HorzAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text1" Left="264.6" Width="198.45" Height="18.9" Text="Data" HorzAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text9" Left="491.4" Width="170.1" Height="18.9" Text="Valor" HorzAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <LineObject Name="Line1" Left="236.25" Height="28.35"/>
+      <LineObject Name="Line3" Left="472.5" Height="28.35"/>
+      <LineObject Name="Line6" Left="18.9" Top="28.35" Width="652.05"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="93.05" Width="718.2" Height="37.8" DataSource="JSON">
+      <TextObject Name="Text3" Left="18.9" Top="9.45" Width="189" Height="18.9" Text="[JSON.item.receiver]" Font="Arial, 12pt"/>
+      <TextObject Name="Text5" Left="264.6" Top="9.45" Width="198.45" Height="18.9" Text="[JSON.item.date]" Font="Arial, 12pt"/>
+      <TextObject Name="Text8" Left="491.4" Top="9.45" Width="170.1" Height="18.9" Text="[JSON.item.value]" Format="Number" Format.UseLocale="true" Format.DecimalDigits="2" WordWrap="false" Font="Arial, 12pt" Trimming="EllipsisCharacter"/>
+      <LineObject Name="Line2" Left="236.25" Height="37.8"/>
+      <LineObject Name="Line4" Left="472.5" Height="37.8"/>
+    </DataBand>
+    <ReportSummaryBand Name="ReportSummary1" Top="134.85" Width="718.2" Height="37.8">
+      <TextObject Name="Text10" Left="491.4" Top="9.45" Width="170.1" Height="18.9" Text="Total: [Total]" HorzAlign="Center" Font="Arial, 12pt, style=Bold"/>
+      <LineObject Name="Line5" Left="18.9" Width="652.05"/>
+    </ReportSummaryBand>
+    <PageFooterBand Name="PageFooter1" Top="176.65" Width="718.2" Height="28.35">
+      <TextObject Name="Text11" Left="500.85" Top="9.45" Width="217.35" Height="18.9" Text="System made by: Guilherme Fornaciari" Font="Arial, 8pt, style=Bold"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

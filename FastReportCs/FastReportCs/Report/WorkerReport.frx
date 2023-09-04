@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/23/2023 17:31:34" ReportInfo.Modified="09/02/2023 12:38:07" ReportInfo.CreatorVersion="2023.2.0.0">
+  <Dictionary>
+    <JsonDataSourceConnection Name="Connection" ConnectionString="rijcmlqbJsCNDUWD8zs7Fjc+Sa5ClTbtho6PWEC2iVuQUq4asTR2DVzqxdC1aIW1J42lx+xxpD+P9TVW850YC6G7oij7LGjRX5mca0K+pBTD4mzAr/XSb4YYyCTFcAlQyvACuMGbMER3dFe7SsTT2ThS2GbGjpqPVvej3jCLxSgr/N9TGEQz/C9iHVEng6jMvdkxjtmtoFzuBFWWOOshIvaetrf6ePVtRhH3FYZ++1liP7sDfZ3ibC5eWRWp6NyqdHb+x4eJIw63ioRKWmxP8GdyUOS6kj10+v7lZ4mXzxxjgWa5Va+sx1ymwD+k32iM0vBtYan0PQpaTYJpMf4GiEWB5nHLqbZTqAuTkOpYHNAxhDaUMgqAVQmQUHDmzR+50wfbtXbphKHgQ+oWDWGI4U+bQ6/rctXReJEHs80gaXWYt+o4vUCQR8nClc98bmVCfv/C1xX19+NVoNui10PSFU0ouYE0NFiuFH6LkjuZv63iLMAU6fzvxbOdMh9kmrQH6gTOUFRev1pr6jqew/N878U0yAAMQ==">
+      <JsonTableDataSource Name="JSON" DataType="FastReport.Utils.Json.JsonArray" Enabled="true" TableName="JSON">
+        <Column Name="index" DataType="System.Int32"/>
+        <Column Name="item" DataType="FastReport.JsonBase">
+          <Column Name="_id" DataType="System.String"/>
+          <Column Name="ename" DataType="System.String"/>
+          <Column Name="surname" DataType="System.String"/>
+          <Column Name="email" DataType="System.String"/>
+          <Column Name="hiringDate" DataType="System.String"/>
+          <Column Name="role" DataType="System.String"/>
+          <Column Name="userid" DataType="System.String"/>
+          <Column Name="presence" DataType="System.Double"/>
+          <Column Name="absence" DataType="System.Double"/>
+        </Column>
+        <Column Name="array" DataType="FastReport.JsonBase"/>
+      </JsonTableDataSource>
+    </JsonDataSourceConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="47.25">
+      <TextObject Name="Text1" Left="97.5" Top="9.45" Width="519.75" Height="28.35" Text="Relatório de funcionários com NodeJs" Font="Arial, 20pt, style=Bold"/>
+      <LineObject Name="Line1" Left="37.8" Top="40.8" Width="642.6" Border.Color="SteelBlue"/>
+      <TextObject Name="Text11" Font="Arial, 10pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="51.25" Width="718.2" Height="37.8">
+      <TextObject Name="Text2" Left="28.35" Top="9.45" Width="179.55" Height="18.9" Border.Color="SteelBlue" Text="Nome" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text3" Left="226.8" Top="9.45" Width="170.1" Height="18.9" Border.Color="SteelBlue" Text="Email" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text4" Left="491.4" Top="9.45" Width="170.1" Height="18.9" Border.Color="SteelBlue" Text="Data de Contratação" Font="Arial, 12pt, style=Bold"/>
+      <TextObject Name="Text5" Left="406.35" Top="9.45" Width="75.6" Height="18.9" Border.Color="SteelBlue" Text="Cargo" Font="Arial, 12pt, style=Bold"/>
+      <LineObject Name="Line2" Left="18.9" Top="37.8" Width="680.4" Border.Color="SteelBlue"/>
+      <LineObject Name="Line3" Left="217.35" Height="37.8" Border.Color="SteelBlue"/>
+      <LineObject Name="Line4" Left="400.35" Height="37.8" Border.Color="SteelBlue"/>
+      <LineObject Name="Line5" Left="486.95" Height="37.8" Border.Color="SteelBlue"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="93.05" Width="718.2" Height="37.8" DataSource="JSON">
+      <LineObject Name="Line6" Left="217.35" Height="37.8" Border.Color="SteelBlue"/>
+      <LineObject Name="Line7" Left="399.9" Height="37.8" Border.Color="SteelBlue"/>
+      <LineObject Name="Line8" Left="487.4" Height="37.8" Border.Color="SteelBlue"/>
+      <TextObject Name="Text8" Left="406.35" Top="3.45" Width="75.6" Height="18.9" Border.Color="SteelBlue" Text="[JSON.item.role]" Font="Arial, 12pt"/>
+      <TextObject Name="Text9" Left="491.4" Top="3.45" Width="207.9" Height="18.9" Border.Color="SteelBlue" Text="[JSON.item.hiringDate]" Font="Arial, 12pt"/>
+      <TextObject Name="Text6" Left="28.35" Top="4" Width="179.55" Height="18.9" Border.Color="SteelBlue" Text="[JSON.item.ename] [JSON.item.surname]" Font="Arial, 12pt"/>
+      <TextObject Name="Text7" Left="226.8" Top="4" Width="170.1" Height="18.9" Border.Color="SteelBlue" Text="[JSON.item.email]" Font="Arial, 12pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="134.85" Width="718.2" Height="18.9">
+      <TextObject Name="Text10" Left="500.85" Width="217.35" Height="18.9" Border.Color="SteelBlue" Text="System made by Guilherme Fornaciari" Font="Arial, 8pt, style=Bold"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
