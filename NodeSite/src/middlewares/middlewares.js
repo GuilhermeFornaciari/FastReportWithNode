@@ -35,6 +35,7 @@ exports.transacIdRequired = async (req, res, next) => {
   next();
 };
 
+
 exports.globalMiddleware = (req, res, next) => {
   res.locals.msgs = req.flash("msgs");
   res.locals.cssClass = req.flash("cssClass");
