@@ -13,7 +13,7 @@ const {
   csrfMiddleware,
   globalMiddleware,
 } = require("./src/middlewares/middlewares");
-const session = require("express-session");
+const session = require("cookie-session");
 const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 
