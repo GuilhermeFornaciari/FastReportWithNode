@@ -12,7 +12,6 @@ const {
   globalMiddleware,
 } = require("./src/middlewares/middlewares");
 const session = require("express-session");
-const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 
 //#####################
@@ -28,17 +27,6 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-const sessionOptions = session({
-  secret: "iuhnftdfftuffjktydftyrfjqgbecfrvigvhf",
-  Store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-    httpOnly: true,
-  },
-});
-app.use(sessionOptions);
 app.use(flash());
 
 app.set("view engine", "ejs");
